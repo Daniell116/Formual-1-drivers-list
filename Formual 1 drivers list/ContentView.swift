@@ -27,7 +27,7 @@ struct ContentView: View {
                     DriverListView(drivers: viewModel.drivers)
                 }
             }
-            .navigationTitle("F1 Legends")
+            .navigationTitle("F1 Drivers 2026")
             .task {
                 if viewModel.drivers.isEmpty {
                     await viewModel.fetchDrivers()
@@ -110,10 +110,7 @@ struct DriverBioView: View {
         VStack(alignment: .leading, spacing: 10) {
             DetailRow(title: "Date of Birth", value: driver.dateOfBirth)
             
-            if driver.isDeceased {
-                DetailRow(title: "Date of Death", value: driver.dateOfDeath ?? "Unknown")
-                DetailRow(title: "Cause of Death", value: driver.causeOfDeath ?? "Unknown")
-            }
+
         }
     }
 }
