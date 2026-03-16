@@ -8,27 +8,21 @@
 import SwiftUI
 
 struct DriverDetailView: View {
-    // This tells the view: "Expect to be handed a Driver when you open!"
     let driver: Driver
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                
-                // --- HEADER ---
                 VStack(alignment: .leading, spacing: 4) {
+                    // names the driver that was selected with their current team
                     Text(driver.name)
                         .font(.system(size: 36, weight: .heavy))
-                    
                     Text(driver.currentTeam)
                         .font(.title2)
                         .foregroundColor(.secondary)
                 }
-                
                 Divider()
-                
-                // --- FAST FACTS ---
                 HStack {
+                    // gives the drivers age
                     VStack(alignment: .leading) {
                         Text("AGE")
                             .font(.caption)
@@ -37,9 +31,8 @@ struct DriverDetailView: View {
                         Text("\(driver.age)")
                             .font(.headline)
                     }
-                    
                     Spacer()
-                    
+                    // any nicknames they mave have from fans
                     if let nickname = driver.nicknames.first {
                         VStack(alignment: .trailing) {
                             Text("NICKNAME")
@@ -53,8 +46,7 @@ struct DriverDetailView: View {
                         }
                     }
                 }
-                
-                // --- BACKGROUND ---
+                //Gives a short background about them
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Background")
                         .font(.title3)
@@ -64,8 +56,7 @@ struct DriverDetailView: View {
                         .font(.body)
                         .lineSpacing(4)
                 }
-                
-                // --- ACCOMPLISHMENTS ---
+                // Their best accopmishment
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Accomplishments")
                         .font(.title3)
@@ -75,21 +66,13 @@ struct DriverDetailView: View {
                         .font(.body)
                         .lineSpacing(4)
                 }
-                // Figiure out how to add this without AI
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Text("Previus Teams")
-//                        .font(.title3)
-//                        .fontWeight(.bold)
-//                    Text(driver.previousTeams)
-//                        .font(.body)
-//                        .lineSpacing(4)
-//                }
                 
             }
             .padding()
         }
-        // This puts their name small at the top of the screen
+        //Puts their name on top of the screen
         .navigationTitle(driver.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
