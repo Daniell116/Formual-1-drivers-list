@@ -25,11 +25,10 @@ struct ContentView: View {
                 }
             } else {
                 List(drivers) { driver in
-
                     NavigationLink {
                         DriverDetailView(driver: driver)
                     } label: {
-                        VStack(alignment: .leading, spacing: 6) {
+                        VStack(alignment: .leading) {
                             Text(driver.name)
                                 .font(.headline)
                                 .fontWeight(.bold)
@@ -41,7 +40,12 @@ struct ContentView: View {
                                     .font(.caption)
                                     .foregroundColor(.gray)
                                 Spacer()
-
+                                Image(driver.teamLogo)
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                Image("\(driver.number)")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
                                 if let nickname = driver.nicknames.first {
                                     Text("\"\(nickname)\"")
                                         .font(.caption)
@@ -50,7 +54,6 @@ struct ContentView: View {
                                 }
                             }
                         }
-                        //.padding(.vertical, 4)
                     }
                 }
                 .navigationTitle("2026 F1 Grid")
@@ -77,21 +80,8 @@ struct ContentView: View {
         }
     }
 }
+
 #Preview {
     ContentView()
 }
-    struct Driver: Codable, Identifiable {
-        let driverId: String
-        let name: String
-        let number: Int
-        let currentTeam: String
-        let teamLogo: String
-        let imageName: String
-        let birthDate: String
-        let age: Int
-        let previousTeams: [String]
-        let nicknames: [String]
-        let background: String
-        let accomplishments: String
-        var id: String { driverId }
-    }
+

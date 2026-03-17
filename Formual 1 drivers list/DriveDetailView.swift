@@ -30,6 +30,9 @@ struct DriverDetailView: View {
                             .foregroundColor(.gray)
                         Text("\(driver.age)")
                             .font(.headline)
+                        Image(driver.imageName)
+                            .resizable()
+                            .frame(width: 200, height: 200)
                     }
                     Spacer()
                     // any nicknames they mave have from fans
